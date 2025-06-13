@@ -1,0 +1,60 @@
+﻿@page "/stopwatch"
+@rendermode InteractiveWebAssembly
+
+@implements IDisposable
+
+<h3>StopWatch</h3>
+
+<div class="d-flex justify-content-center align-items-center">
+    <div class="border border-black rounded-1 d-flex flex-column align-items-center gap-4">
+        <div class="m-2">@elapse seconds elapse</div>
+        @if (state == "initial")
+        {
+            <button @onclick="Start" class="m-1">Start</button>
+        }
+        @if (state == "running")
+        {
+            <button @onclick="Pause" class="m-1">Pause</button>
+        }
+        @if (state == "pause")
+        {
+            <div>
+                <button @onclick="Start">Resume</button>
+                <button @onclick="Reset">Reset</button>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    public int elapse { get; set; } = 0;
+    public string state { get; set; } = "initial";
+    private System.Threading.Timer timer { get; set; } = null;
+
+    public void Start()
+    {
+        state = "running";
+        timer = new System.Threading.Timer(async _=>
+        {
+            elapse = elapse + 1;
+            await InvokeAsync(StateHasChanged);
+        }, null, 0, 1000);
+    }
+
+    public void Pause()
+    {
+        state = "pause";
+        timer?.Dispose();
+    }
+
+    public void Reset()
+    {
+        state = "initial";
+        elapse = 0;
+    }
+
+    public void Dispose()
+    {
+        timer?.Dispose();
+    }
+}

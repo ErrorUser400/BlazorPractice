@@ -1,0 +1,27 @@
+﻿@page "/dicev2"
+@rendermode InteractiveAuto
+
+<h3>Dice</h3>
+
+<div>@RendererInfo.Name</div>
+
+<div class="d-flex align-items-center justify-content-center">
+    <button @onclick="RollDice">Roll</button>
+</div>
+
+@if (dice is not null)
+{
+    <i class="d-flex justify-content-center align-items-center bi bi-dice-@dice h1 m-3"></i>
+}
+
+@code {
+    private Random rnd = new();
+    public int? dice { get; set; } = null;
+
+    public void RollDice()
+    {
+        dice = rnd.Next(1,7);
+        InvokeAsync(StateHasChanged);
+    }
+
+}

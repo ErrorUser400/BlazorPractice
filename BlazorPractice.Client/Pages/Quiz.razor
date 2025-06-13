@@ -1,0 +1,88 @@
+﻿@page "/quiz"
+@rendermode InteractiveWebAssembly
+
+<h3>Quiz</h3>
+
+<div>@QuizState</div>
+
+<div>
+    @if (QuizState == "initial")
+    {
+        <button @onclick="StartQuiz" class="m-1">Start</button>
+    }
+    @if (QuizState == "running")
+    {
+        <div>
+            <div>Question</div>
+            <button></button>
+            <button></button>
+            <button></button>
+            <button></button>
+        </div>
+    }
+    @if (QuizState == "end")
+    {
+        <div>end</div>
+    }
+</div>
+
+@code {
+    public string QuizState { get; set; } = "initial";
+    public List<QuizObject> quizObjects = new()
+    {
+       new QuizObject()
+       {
+         Question = "What is Microsoft's frontend FrameWork",
+         options = new()
+         {
+             new()
+             {
+                 Descriptions = "React",
+                 isAnswer = false
+             },
+             new()
+             {
+                 Descriptions = "Angular",
+                 isAnswer = false
+             },
+             new()
+             {
+                 Descriptions = "Svelte",
+                 isAnswer = false
+             },
+             new()
+             {
+                 Descriptions = "Blazor",
+                 isAnswer = true
+             },
+         }
+       },
+    };
+
+    private void StartQuiz()
+    {
+        QuizState = "running";
+    }
+
+    public void RunQuiz()
+    {
+        int curr = 0;
+    }
+
+    public void ResetQuiz()
+    {
+        QuizState = "initial";
+    }
+
+    public class QuizObject()
+    {
+        public string Question { get; set; } = "";
+        public List<Options> options { get; set; } = [];
+    }
+
+    public class Options()
+    {
+        public string Descriptions { get; set; }
+        public bool isAnswer { get; set; }
+    }
+}

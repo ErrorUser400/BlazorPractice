@@ -1,0 +1,60 @@
+﻿@page "/quotesgenerator"
+@rendermode InteractiveWebAssembly
+
+<h3>QuotesGenerator</h3>
+
+<div class="d-flex flex-column align-items-center justify-content-center border border-black">
+    @if (!isLoading)
+    {
+        <div>"@quote"</div>
+    }
+    else
+    {
+        <div class="spinner-grow" role="status"></div>
+    }
+    <button class="d-flex justify-content-center m-1 rounded-1" @onclick="GetNextQuote">Next Quote</button>
+</div>
+
+@code {
+    public string quote { get; set; } = "";
+    public bool isLoading { get; set; } = false;
+    private HttpClient httpClient;
+
+    public async void GetNextQuote()
+    {
+        var request = new HttpRequestMessage(HttpMethod.Get, "https://api.gameofthronesquotes.xyz/v1/random");
+        isLoading = true;
+
+        using (httpClient = new HttpClient())
+        {
+            var response = await httpClient.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = response.Content.ReadFromJsonAsync<Quote>();
+                quote = content.Result.sentence;
+            }
+        }
+
+        isLoading = false;
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private class Quote()
+    {
+        public string sentence { get; set; } = string.Empty;
+        public Character character { get; set; }
+    }
+    private class Character()
+    {
+        public string name { get; set; }
+        public string slug { get; set; }
+        public House house { get; set; }
+
+    }
+    private class House()
+    {
+        public string name { get; set; }
+        public string slug { get; set; }
+    }
+}

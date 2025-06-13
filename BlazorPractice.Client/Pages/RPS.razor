@@ -1,0 +1,73 @@
+﻿@page "/rps"
+@rendermode InteractiveWebAssembly
+
+<PageTitle>RPS</PageTitle>
+
+<h3>Rock Paper Scissor</h3>
+
+@if (gameState == "playing")
+{
+    <div class="d-flex gap-3">
+        <button @onclick='() => GameHandler("rock")' class="h-auto w-50">Rock</button>
+        <button @onclick='() => GameHandler("paper")' class="h-auto w-50">Paper</button>
+        <button @onclick='() => GameHandler("scissor")' class="h-auto w-50">Scissor</button>
+    </div>
+}
+else
+{
+    <div class="align-content-center flex-column justify-content-center">
+        <div>GameOver You @result</div>
+        <div>Player picked @UserPick</div>
+        <div>AI picked @AIPick</div>
+        <button @onclick="ResetGame">Try Again</button>
+    </div>
+}
+
+@code {
+    public string gameState { get; set; } = "playing";
+    public string UserPick { get; set; } = "";
+    public string AIPick { get; set; } = "";
+    public string result { get; set; } = "";
+    private string[] Options = ["rock", "paper", "scissor"];
+    private Random random = new();
+
+    private void GameHandler(string user)
+    {
+        UserPick = user;
+        AIPick = Options[random.Next(0, 3)];
+        result = GameResult(UserPick, AIPick);
+        gameState = "Done";
+    }
+
+    private void ResetGame()
+    {
+        UserPick = "";
+        AIPick = "";
+        result = "";
+        gameState = "playing";
+    }
+
+    private string GameResult(string user, string ai)
+    {
+        if (user == ai)
+        {
+            return "draw";
+        }
+        else if (user == "rock" && ai == "scissor")
+        {
+            return "Won";
+        }
+        else if (user == "papper" && ai == "rock")
+        {
+            return "Won";
+        }
+        else if (user == "scissor" && ai == "paper")
+        {
+            return "Won";
+        }
+        else
+        {
+            return "Lost";
+        }
+    }
+}

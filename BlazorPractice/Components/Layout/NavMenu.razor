@@ -1,0 +1,74 @@
+﻿<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">BlazorPractice</a>
+    </div>
+</div>
+
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <nav class="nav flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="colorgradient">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Color Gradient
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="dicev2">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Dice
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="quotesgenerator">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Quotes Generator
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="rps">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Rock Paper Scissor
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="stopwatch">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Stop Watch
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="tictactoe">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Tic Tac Toe
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="trafficlight">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Traffic Light
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="whackamole">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Whack A Mole
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="quiz">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Quiz
+            </NavLink>
+        </div>
+    </nav>
+</div>
+
+@code{
+    private bool SubNavMenu;
+}

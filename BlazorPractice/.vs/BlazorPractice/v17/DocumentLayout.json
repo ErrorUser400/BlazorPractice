@@ -1,0 +1,73 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\bensa\\Documents\\personal_site\\BlazorPractice\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AD85A17E-199D-4A11-846A-3AF89900BAD1}|BlazorPractice.Client\\BlazorPractice.Client.csproj|c:\\users\\bensa\\documents\\personal_site\\blazorpractice\\blazorpractice.client\\pages\\quiz.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AD85A17E-199D-4A11-846A-3AF89900BAD1}|BlazorPractice.Client\\BlazorPractice.Client.csproj|solutionrelative:blazorpractice.client\\pages\\quiz.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD85A17E-199D-4A11-846A-3AF89900BAD1}|BlazorPractice.Client\\BlazorPractice.Client.csproj|c:\\users\\bensa\\documents\\personal_site\\blazorpractice\\blazorpractice.client\\pages\\stopwatch.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AD85A17E-199D-4A11-846A-3AF89900BAD1}|BlazorPractice.Client\\BlazorPractice.Client.csproj|solutionrelative:blazorpractice.client\\pages\\stopwatch.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StopWatch.razor",
+              "DocumentMoniker": "C:\\Users\\bensa\\Documents\\personal_site\\BlazorPractice\\BlazorPractice.Client\\Pages\\StopWatch.razor",
+              "RelativeDocumentMoniker": "BlazorPractice.Client\\Pages\\StopWatch.razor",
+              "ToolTip": "C:\\Users\\bensa\\Documents\\personal_site\\BlazorPractice\\BlazorPractice.Client\\Pages\\StopWatch.razor",
+              "RelativeToolTip": "BlazorPractice.Client\\Pages\\StopWatch.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-19T22:51:24.502Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Quiz.razor",
+              "DocumentMoniker": "C:\\Users\\bensa\\Documents\\personal_site\\BlazorPractice\\BlazorPractice.Client\\Pages\\Quiz.razor",
+              "RelativeDocumentMoniker": "BlazorPractice.Client\\Pages\\Quiz.razor",
+              "ToolTip": "C:\\Users\\bensa\\Documents\\personal_site\\BlazorPractice\\BlazorPractice.Client\\Pages\\Quiz.razor",
+              "RelativeToolTip": "BlazorPractice.Client\\Pages\\Quiz.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-19T21:50:53.981Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

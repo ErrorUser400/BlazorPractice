@@ -1,0 +1,4 @@
+wwwroot\appsettings.Development.json
+wwwroot\appsettings.json
+C:\Users\bensa\Documents\personal_site\BlazorPractice\BlazorPractice.Client\wwwroot\appsettings.Development.json
+C:\Users\bensa\Documents\personal_site\BlazorPractice\BlazorPractice.Client\wwwroot\appsettings.json

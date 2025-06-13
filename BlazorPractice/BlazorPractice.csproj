@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlazorPractice.Client\BlazorPractice.Client.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.4" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\BlazorPractice\wwwroot\app.css" Link="wwwroot\app.css" />
+		<None Include="..\BlazorPractice\wwwroot\lib\bootstrap\css\bootstrap.min.css" Link="wwwroot\lib\bootstrap\css\bootstrap.min.css" />
+	</ItemGroup>
+
+
+</Project>

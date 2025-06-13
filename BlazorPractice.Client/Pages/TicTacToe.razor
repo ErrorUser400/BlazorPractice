@@ -1,0 +1,133 @@
+﻿@page "/tictactoe"
+@rendermode InteractiveWebAssembly
+
+<h3>TicTacToe</h3>
+
+
+@if (!gameState)
+{
+    <div class="d-flex flex-column mb-2">
+        <h2 class="d-flex align-content-center justify-content-center">Player @winner Won!</h2>
+        <button class="d-flex align-content-center justify-content-center mx-5" @onclick="BoardReset">Play Again</button>
+    </div>
+}
+
+<div class="d-flex flex row h-75 w-75 mx-auto">
+    @for (int i = 0; i < 3; i++)
+    {
+        <div class="d-flex flex-col gap-2">
+            @for (int j = 0; j < 3; j++)
+            {
+                int r = i;
+                int c = j;
+                <button disabled="@(!gameState)" style="height:100px; width:100px;" class='m-1 rounded-2' @onclick="() => UserPress(r,c)">
+                    @if(board[i,j] == 1){
+                        <div>X</div>
+                    }
+                    else if (board[i,j] == 2)
+                    {
+                        <div>O</div>
+                    }
+                    else
+                    {
+                        <div>&nbsp;</div>
+                    }
+                </button>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    //1 == x 2 == o
+    //turn == true == x
+    //turn == false == o
+    public int[,] board { get; set; } = new int[3,3];
+    public string winner { get; set; } = "";
+    public bool turn { get; set; } = true;
+    public bool gameState { get; set; } = true;
+    private int count { get; set; } = 0;
+
+    public void UserPress(int r, int c)
+    {
+        if (board[r,c] != 0)
+        {
+            return;
+        }
+
+        if (turn)
+        {
+            board[r, c] = 1;
+            if (CheckBoard(1))
+            {
+                gameState = false;
+                winner = "X";
+                return;
+            }
+            count++;
+            turn = false;
+            if (count == 9)
+            {
+                gameState = false;
+                winner = "No One";
+                return;
+            }
+        }
+        else
+        {
+            board[r, c] = 2;
+            if (CheckBoard(2))
+            {
+                gameState = false;
+                winner = "O";
+                return;
+            }
+            count++;
+            turn = true;
+        }
+    }
+
+    public bool CheckBoard(int player){
+
+        //check each row
+        for (int r = 0; r < 3; r++)
+        {
+            if (board[r, 0] == player && board[r, 0] == board[r, 1] && board[r, 1] == board[r, 2])
+            {
+                return true;
+            }
+        }
+
+        //check each col
+        for (int c = 0; c < 3; c++)
+        {
+            if (board[0, c] == player && board[0, c] == board[1, c] && board[1, c] == board[2, c])
+            {
+                return true;
+            }
+        }
+
+        //left to right
+        if (board[0,0] == player && board[0,0] == board[1,1] && board[1,1] == board[2,2])
+        {
+            return true;
+        }
+
+        //right to left
+        if (board[2,0] == player && board[2,0] == board[1,1] && board[1,1] == board [0,2])
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void BoardReset()
+    {
+        board = new int[3, 3];
+        winner = "";
+        turn = true;
+        gameState = true;
+        count = 0;
+    }
+}

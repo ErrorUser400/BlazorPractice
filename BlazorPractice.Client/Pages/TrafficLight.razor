@@ -1,0 +1,55 @@
+﻿@page "/trafficlight"
+@rendermode InteractiveWebAssembly
+
+<h3>TrafficLight</h3>
+
+<div>@currentLight</div>
+
+<div class="d-flex flex-column align-items-center justify-content-center">
+    <div style="height:100px; width:100px;" class="border rounded-circle @(currentLight == "red"? "bg-danger" : "bg-danger-subtle")">&nbsp;</div>
+    <div style="height:100px; width:100px;" class="border rounded-circle @(currentLight == "yellow"? "bg-warning" : "bg-warning-subtle")">&nbsp;</div>
+    <div style="height:100px; width:100px;" class="border rounded-circle @(currentLight == "green"? "bg-success" : "bg-success-subtle")">&nbsp;</div>
+</div>
+
+
+@code {
+    public string currentLight { get; set; } = "red";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            ChangeLight();
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    private async void ChangeLight()
+    {
+
+        if (currentLight == "red")
+        {
+            await Task.Delay(5000);
+            currentLight = "green";
+            await InvokeAsync(StateHasChanged);
+            ChangeLight();
+        }
+        else if (currentLight == "yellow")
+        {
+            await Task.Delay(1000);
+            currentLight = "red";
+            await InvokeAsync(StateHasChanged);
+            ChangeLight();
+        }
+        else if (currentLight == "green")
+        {
+            await Task.Delay(5000);
+            currentLight = "yellow";
+            await InvokeAsync(StateHasChanged);
+            ChangeLight();
+        }
+
+    }
+
+}

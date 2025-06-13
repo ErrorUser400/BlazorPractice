@@ -1,0 +1,64 @@
+﻿@page "/whackamole"
+@rendermode InteractiveWebAssembly
+
+<h3>WhackAMole</h3>
+
+<h4 class="d-flex flex align-items-center justify-content-center">@score</h4>
+
+<div class="h-100 w-100 d-flex flex-column align-items-center justify-content-center">
+    @for (int r = 0; r < 4; r++)
+    {
+        <div class="d-flex flex-row h-25 w-50">
+            @for (int c = 0; c < 4; c++)
+            {
+                int row = r;
+                int col = c;
+                <button class="d-flex flex-column h-50 w-50 m-3" @onclick="() => WhackSpot(row, col)">
+                    @if (board[r,c] == 1)
+                    {
+                        <i class="bi bi-android"></i>
+                    }
+                    else
+                    {
+                        <div>&nbsp;</div>
+                    }
+                </button>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    public int[,] board { get; set; } = new int[4, 4];
+    public int score { get; set; } = 0;
+    private System.Threading.Timer? timer { get; set; } = null;
+    private int prevR { get; set; } = 0;
+    private int prevC { get; set; } = 0;
+    private Random random { get; set; } = new();
+
+    protected override Task OnInitializedAsync()
+    {
+        timer = new System.Threading.Timer( _=>
+        {
+            int randR = random.Next(0,4);
+            int randC = random.Next(0, 4);
+            board[prevR, prevC] = 0;
+            board[randR, randC] = 1;
+            prevR = randR;
+            prevC = randC;
+            InvokeAsync(StateHasChanged);
+        }, null, 0, 700);
+
+
+        return base.OnInitializedAsync();
+    }
+
+    public async void WhackSpot(int r, int c)
+    {
+        if (board[r,c] == 1)
+        {
+            score = score + 1;
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+}
